@@ -1,0 +1,88 @@
+@container-width: 600px;
+@footer-height: 60px;
+@header-height: 50px;
+@margin-offset: 10px;
+@image-height: 200px;
+@image-offset: -125px;
+
+html, body {
+	background: purple;
+}
+
+#header {
+	background-color: red;
+	height: @header-height;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	box-shadow: 0 1px 6px black;
+
+	#links {
+		width: @container-width;
+		margin: (@header-height / 3) auto;
+		text-align: right;
+
+		a {
+			margin: 0 10px;
+			text-decoration: none;
+		}
+
+		:visited {
+			color: white;
+		}
+
+		:hover {
+			color: yellow;
+		}
+	}
+}
+
+#main_container {
+	margin-top: (@header-height + @margin-offset);
+	margin-bottom: (@image-height + @margin-offset);
+
+	#home, #projects, #work {
+		margin: 0 auto;
+		width: @container-width;
+		box-shadow: 0 3px 6px black;
+	}
+
+	#home {
+		background-color: yellow;
+	}
+
+	#projects {
+		background-color: green;
+	}
+
+	#work {
+		background-color: blue;
+	}
+}
+
+#footer {
+	height: @footer-height;
+	background-color: green;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	box-shadow: 0 -1px 6px black;
+
+	#contact {
+		width: @container-width;
+		margin: 0 auto;
+		background-color: yellow;
+
+		#profile_pic {
+			position: relative;
+			top: @image-offset;
+			height: @image-height;
+			z-index: 99;
+			float: right;
+		}
+
+		#copywrite {
+			float: left;
+		}
+	}	
+}
