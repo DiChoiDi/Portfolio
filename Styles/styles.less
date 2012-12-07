@@ -1,13 +1,18 @@
 @container-width: 600px;
-@footer-height: 50px;
-@header-height: 50px;
+@footer-height: 30px;
+@header-height: 40px;
 @margin-offset: 10px;
-@image-height: 225px;
-@image-width: 125px;
-@image-offset: -175px;
+@image-height: 275px;
+@image-width: 175px;
+@image-offset: -225px;
 
 html, body {
 	background: purple;
+	margin: 0 0 0 0;
+}
+
+h1, h2, h3, h4, p {
+	margin: @margin-offset 0;
 }
 
 #header {
@@ -16,20 +21,25 @@ html, body {
 	position: fixed;
 	top: 0;
 	width: 100%;
-	box-shadow: 0 1px 6px black;
+	box-shadow: 0 2px 6px black;
 
 	#links {
 		width: @container-width;
-		margin: (@header-height / 3) auto;
+		margin: (@header-height / 4) auto;
 		text-align: right;
 		font-size: 20px;
 
 		a {
-			margin: 0 10px;
+			color: white;
 			text-decoration: none;
+			margin: 0 10px;
 		}
 
 		:visited {
+			color: white;
+		}
+
+		:active {
 			color: white;
 		}
 
@@ -44,16 +54,31 @@ html, body {
 	margin-bottom: (@image-height - @margin-offset);
 
 	section.content {
-		padding: 0 5px 1px 5px;
 	}
 
 	#home, #projects, #work {
 		margin: 0 auto;
 		width: @container-width;
-		box-shadow: 0 3px 6px black;
+		box-shadow: 0 2px 6px black;
 
-		p {
-			padding: 0 25px;	
+		p {	
+		}
+
+		article {
+			header {
+				.article-name {
+					float: left;
+				}
+				.article-date {
+					float: right;
+				}
+			}
+
+			header:after {
+					content: ''; 
+					display: block; 
+					clear: both; 
+				}
 		}
 	}
 
@@ -72,39 +97,63 @@ html, body {
 
 #footer {
 	height: @footer-height;
-	background-color: green;
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	box-shadow: 0 -1px 6px black;
 	text-align: center;
 
-	#copywrite {
-		position: relative;
-		top: (@footer-height / 3);
-	}	
+	#footer_bar {
+		position: absolute;
+		background-color: green;
+		box-shadow: 0 -2px 6px black;
+		z-index: 99;
+		height: @footer-height;
+		bottom: 0;
+		width: 100%;
+
+		#copywrite {
+			position: relative;
+			top: (@footer-height / 6);
+		}	
+	}
 
 	#contact {
 		width: @container-width;
 		margin: 0 auto;
-		background-color: yellow;
 
 		#profile_pic {
 			float: right;
 			position: relative;
-			box-shadow: 0 0 10px black;
 			top: @image-offset;
 			height: @image-height;
-			z-index: 1;
+			width: @image-width;
 		}
 
 		#information {
+			@info-width: (@container-width - @image-width);
+			@info-height: (-@image-offset - @footer-height / 3 + @margin-offset) * .75 ;
+
+			display: none;
 			float: left;
 			position: relative;
 			background-color: yellow;
-			height: (-@image-offset - @footer-height / 3 - @margin-offset);
-			width: (@container-width - @image-width - @margin-offset);
-			top: @image-offset;
+			border-radius: 60px;
+			height: @info-height;
+			width: @info-width;
+			top: @image-offset + @margin-offset;
+			box-shadow: 1px 3px 6px black;
+
+			/* creates triangle */
+			:after {
+				content: "";
+				display: block; /* reduce the damage in FF3.0 */
+				position: absolute;
+				bottom: (@info-height / 4);
+				right: -10px;
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+				border-left: 15px solid yellow;
+			}
 		}
 	}	
 }

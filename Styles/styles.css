@@ -1,12 +1,17 @@
-html,body{background:purple;}
-#header{background-color:red;height:50px;position:fixed;top:0;width:100%;box-shadow:0 1px 6px black;}#header #links{width:600px;margin:16.666666666666668px auto;text-align:right;font-size:20px;}#header #links a{margin:0 10px;text-decoration:none;}
+html,body{background:purple;margin:0 0 0 0;}
+h1,h2,h3,h4,p{margin:10px 0;}
+#header{background-color:red;height:40px;position:fixed;top:0;width:100%;box-shadow:0 2px 6px black;}#header #links{width:600px;margin:10px auto;text-align:right;font-size:20px;}#header #links a{color:white;text-decoration:none;margin:0 10px;}
 #header #links :visited{color:white;}
+#header #links :active{color:white;}
 #header #links :hover{color:yellow;}
-#main_container{margin-top:60px;margin-bottom:215px;}#main_container section.content{padding:0 5px 1px 5px;}
-#main_container #home,#main_container #projects,#main_container #work{margin:0 auto;width:600px;box-shadow:0 3px 6px black;}#main_container #home p,#main_container #projects p,#main_container #work p{padding:0 25px;}
+#main_container{margin-top:50px;margin-bottom:265px;}
+#main_container #home,#main_container #projects,#main_container #work{margin:0 auto;width:600px;box-shadow:0 2px 6px black;}
+#main_container #home article header .article-name,#main_container #projects article header .article-name,#main_container #work article header .article-name{float:left;}
+#main_container #home article header .article-date,#main_container #projects article header .article-date,#main_container #work article header .article-date{float:right;}
+#main_container #home article header:after,#main_container #projects article header:after,#main_container #work article header:after{content:'';display:block;clear:both;}
 #main_container #home{background-color:yellow;}
 #main_container #projects{background-color:green;}
 #main_container #work{background-color:blue;}
-#footer{height:50px;background-color:green;position:fixed;width:100%;bottom:0;box-shadow:0 -1px 6px #000000;text-align:center;}#footer #copywrite{position:relative;top:16.666666666666668px;}
-#footer #contact{width:600px;margin:0 auto;background-color:yellow;}#footer #contact #profile_pic{float:right;position:relative;box-shadow:0 0 10px black;top:-175px;height:225px;z-index:1;}
-#footer #contact #information{float:left;position:relative;background-color:yellow;height:148.33333333333334px;width:465px;top:-175px;}
+#footer{height:30px;position:fixed;width:100%;bottom:0;text-align:center;}#footer #footer_bar{position:absolute;background-color:green;box-shadow:0 -2px 6px #000000;z-index:99;height:30px;bottom:0;width:100%;}#footer #footer_bar #copywrite{position:relative;top:5px;}
+#footer #contact{width:600px;margin:0 auto;}#footer #contact #profile_pic{float:right;position:relative;top:-225px;height:275px;width:175px;}
+#footer #contact #information{display:none;float:left;position:relative;background-color:yellow;border-radius:60px;height:168.75px;width:425px;top:-215px;box-shadow:1px 3px 6px black;}#footer #contact #information :after{content:"";display:block;position:absolute;bottom:42.1875px;right:-10px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:15px solid yellow;}
