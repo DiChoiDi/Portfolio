@@ -1,10 +1,12 @@
 html,body{background:purple;}
-#header{background-color:red;height:50px;position:fixed;top:0;width:100%;box-shadow:0 1px 6px black;}#header #links{width:600px;margin:16.666666666666668px auto;text-align:right;}#header #links a{margin:0 10px;text-decoration:none;}
+#header{background-color:red;height:50px;position:fixed;top:0;width:100%;box-shadow:0 1px 6px black;}#header #links{width:600px;margin:16.666666666666668px auto;text-align:right;font-size:20px;}#header #links a{margin:0 10px;text-decoration:none;}
 #header #links :visited{color:white;}
 #header #links :hover{color:yellow;}
-#main_container{margin-top:60px;margin-bottom:210px;}#main_container #home,#main_container #projects,#main_container #work{margin:0 auto;width:600px;box-shadow:0 3px 6px black;}
+#main_container{margin-top:60px;margin-bottom:215px;}#main_container section.content{padding:0 5px 1px 5px;}
+#main_container #home,#main_container #projects,#main_container #work{margin:0 auto;width:600px;box-shadow:0 3px 6px black;}#main_container #home p,#main_container #projects p,#main_container #work p{padding:0 25px;}
 #main_container #home{background-color:yellow;}
 #main_container #projects{background-color:green;}
 #main_container #work{background-color:blue;}
-#footer{height:60px;background-color:green;position:fixed;width:100%;bottom:0;box-shadow:0 -1px 6px #000000;}#footer #contact{width:600px;margin:0 auto;background-color:yellow;}#footer #contact #profile_pic{position:relative;top:-125px;height:200px;z-index:99;float:right;}
-#footer #contact #copywrite{float:left;}
+#footer{height:50px;background-color:green;position:fixed;width:100%;bottom:0;box-shadow:0 -1px 6px #000000;text-align:center;}#footer #copywrite{position:relative;top:16.666666666666668px;}
+#footer #contact{width:600px;margin:0 auto;background-color:yellow;}#footer #contact #profile_pic{float:right;position:relative;box-shadow:0 0 10px black;top:-175px;height:225px;z-index:1;}
+#footer #contact #information{float:left;position:relative;background-color:yellow;height:148.33333333333334px;width:465px;top:-175px;}

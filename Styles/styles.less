@@ -1,9 +1,10 @@
 @container-width: 600px;
-@footer-height: 60px;
+@footer-height: 50px;
 @header-height: 50px;
 @margin-offset: 10px;
-@image-height: 200px;
-@image-offset: -125px;
+@image-height: 225px;
+@image-width: 125px;
+@image-offset: -175px;
 
 html, body {
 	background: purple;
@@ -21,6 +22,7 @@ html, body {
 		width: @container-width;
 		margin: (@header-height / 3) auto;
 		text-align: right;
+		font-size: 20px;
 
 		a {
 			margin: 0 10px;
@@ -39,12 +41,20 @@ html, body {
 
 #main_container {
 	margin-top: (@header-height + @margin-offset);
-	margin-bottom: (@image-height + @margin-offset);
+	margin-bottom: (@image-height - @margin-offset);
+
+	section.content {
+		padding: 0 5px 1px 5px;
+	}
 
 	#home, #projects, #work {
 		margin: 0 auto;
 		width: @container-width;
 		box-shadow: 0 3px 6px black;
+
+		p {
+			padding: 0 25px;	
+		}
 	}
 
 	#home {
@@ -67,6 +77,12 @@ html, body {
 	width: 100%;
 	bottom: 0;
 	box-shadow: 0 -1px 6px black;
+	text-align: center;
+
+	#copywrite {
+		position: relative;
+		top: (@footer-height / 3);
+	}	
 
 	#contact {
 		width: @container-width;
@@ -74,15 +90,21 @@ html, body {
 		background-color: yellow;
 
 		#profile_pic {
+			float: right;
 			position: relative;
+			box-shadow: 0 0 10px black;
 			top: @image-offset;
 			height: @image-height;
-			z-index: 99;
-			float: right;
+			z-index: 1;
 		}
 
-		#copywrite {
+		#information {
 			float: left;
+			position: relative;
+			background-color: yellow;
+			height: (-@image-offset - @footer-height / 3 - @margin-offset);
+			width: (@container-width - @image-width - @margin-offset);
+			top: @image-offset;
 		}
 	}	
 }
