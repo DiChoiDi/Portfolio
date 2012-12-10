@@ -4,9 +4,9 @@
 
   isMouseOverContact = false;
 
-  scrollOffset = 30;
+  scrollOffset = 35;
 
-  contactFadeDuration = 300;
+  contactFadeDuration = 350;
 
   $(document).ready(function() {
     $('#profile_pic').on('mouseenter', fadeInInformation);

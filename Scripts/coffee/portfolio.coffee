@@ -1,6 +1,6 @@
 isMouseOverContact = false
-scrollOffset = 30
-contactFadeDuration = 300
+scrollOffset = 35
+contactFadeDuration = 350
 
 $(document).ready ->
 	$('#profile_pic').on 'mouseenter', fadeInInformation
