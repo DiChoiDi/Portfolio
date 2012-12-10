@@ -1,127 +1,216 @@
-@container-width: 600px;
+@container-width: 550px;
 @footer-height: 30px;
 @header-height: 40px;
 @margin-offset: 10px;
+@content-offset: 25px;
 @image-height: 275px;
 @image-width: 175px;
 @image-offset: -225px;
 
-html, body {
+html, body 
+{
 	background: purple;
+	background-image: url('../images/wallpaper.jpg');
 	margin: 0 0 0 0;
 }
 
-h1, h2, h3, h4, p {
-	margin: @margin-offset 0;
+h1, h2, h3, h4, p 
+{
+	margin: 0 0;
 }
 
-#header {
-	background-color: red;
+h3, h4 
+{
+	padding: 5px 10px;
+}
+
+
+#header 
+{
+	background-color: #4D1200;
 	height: @header-height;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	box-shadow: 0 2px 6px black;
 
-	#links {
+	#links 
+	{
 		width: @container-width;
 		margin: (@header-height / 4) auto;
 		text-align: right;
 		font-size: 20px;
 
-		a {
+		a 
+		{
 			color: white;
 			text-decoration: none;
 			margin: 0 10px;
 		}
 
-		:visited {
+		:visited 
+		{
 			color: white;
 		}
 
-		:active {
+		:active 
+		{
 			color: white;
 		}
 
-		:hover {
+		:hover 
+		{
 			color: yellow;
 		}
 	}
 }
 
-#main_container {
+#main_container 
+{
 	margin-top: (@header-height + @margin-offset);
 	margin-bottom: (@image-height - @margin-offset);
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url('../images/corkboard.jpg');
+	width: @container-width + (@margin-offset * 2);
+	border: 20px ridge brown;
 
-	section.content {
-	}
-
-	#home, #projects, #work {
-		margin: 0 auto;
+	#home, #projects, #work 
+	{
+		margin: @margin-offset auto;
 		width: @container-width;
-		box-shadow: 0 2px 6px black;
 
-		p {	
+		h1 
+		{
+			margin: @margin-offset 0;
 		}
 
-		article {
-			header {
-				.article-name {
+		article 
+		{
+			box-shadow: 0 2px 6px black;
+			
+			header
+			{
+				.article-name 
+				{
 					float: left;
 				}
-				.article-date {
+				.article-date 
+				{
 					float: right;
 				}
 			}
 
-			header:after {
-					content: ''; 
-					display: block; 
-					clear: both; 
+			header:after 
+			{
+				content: ''; 
+				display: block; 
+				clear: both; 
+			}
+
+			p 
+			{
+				padding: @margin-offset @content-offset @margin-offset @content-offset;
+			}
+
+			.link-details
+			{
+				display: block;
+				background-color: blue;
+				text-align:right;
+				padding-right: @margin-offset;
+				padding-bottom: @margin-offset;
+				margin-bottom: @margin-offset;
+
+				a 
+				{
+					text-decoration: none;
 				}
+			}
 		}
 	}
 
-	#home {
-		background-color: yellow;
+	#home 
+	{
+
+		article
+		{
+			header
+			{
+				background-color: hsl(60, 100%, 55%);
+			}
+			p, .link-details
+			{
+				background-color: hsl(60, 100%, 80%);	
+			}
+		}
 	}
 
-	#projects {
-		background-color: green;
+	#projects 
+	{
+		article
+		{
+			header
+			{
+				background-color: hsl(200, 100%, 55%);
+			}
+			p, .link-details
+			{
+				background-color: hsl(200, 100%, 80%);	
+			}
+		}
 	}
 
-	#work {
-		background-color: blue;
+	#work 
+	{
+		article
+		{
+			header
+			{
+				background-color: hsl(120, 100%, 55%);
+			}
+			p, .link-details
+			{
+				background-color: hsl(120, 100%, 80%);	
+			}
+		}
 	}
 }
 
-#footer {
+#footer 
+{
 	height: @footer-height;
 	position: fixed;
 	width: 100%;
 	bottom: 0;
-	text-align: center;
 
-	#footer_bar {
+	#footer_bar 
+	{
 		position: absolute;
-		background-color: green;
+		background-color: #4D1200;
 		box-shadow: 0 -2px 6px black;
 		z-index: 99;
 		height: @footer-height;
 		bottom: 0;
 		width: 100%;
+		text-align: center;
 
-		#copywrite {
+		#copywrite 
+		{
 			position: relative;
+			font-size: .75em;
+			color: white;
 			top: (@footer-height / 6);
 		}	
 	}
 
-	#contact {
+	#contact 
+	{
 		width: @container-width;
 		margin: 0 auto;
 
-		#profile_pic {
+		#profile_pic 
+		{
 			float: right;
 			position: relative;
 			top: @image-offset;
@@ -129,7 +218,8 @@ h1, h2, h3, h4, p {
 			width: @image-width;
 		}
 
-		#information {
+		#information 
+		{
 			@info-width: (@container-width - @image-width);
 			@info-height: (-@image-offset - @footer-height / 3 + @margin-offset) * .75 ;
 
@@ -142,9 +232,16 @@ h1, h2, h3, h4, p {
 			width: @info-width;
 			top: @image-offset + @margin-offset;
 			box-shadow: 1px 3px 6px black;
+			text-align: center;
 
+			h3 
+			{
+				margin-top: @margin-offset;
+			}
+			
 			/* creates triangle */
-			:after {
+			:after 
+			{
 				content: "";
 				display: block; /* reduce the damage in FF3.0 */
 				position: absolute;

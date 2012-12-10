@@ -1,5 +1,6 @@
 isMouseOverContact = false
-scrollOffset = 50
+scrollOffset = 30
+contactFadeDuration = 300
 
 $(document).ready ->
 	$('#profile_pic').on 'mouseenter', fadeInInformation
@@ -23,21 +24,23 @@ shiftWindow = (position) ->
 	scrollTo 0, (position - scrollOffset)
 
 fadeInInformation = () ->
-	$('#information').fadeIn(325)
+	$('#profile_pic').attr 'src', 'images/profile.png'
+	$('#information').fadeIn(contactFadeDuration)
 	isMouseOverContact = true
 
 fadeOutInformation = () ->
-	$('#information').fadeOut(325)
+	$('#information').fadeOut(contactFadeDuration)
 	isMouseOverContact = false
+	determineProfilePicture()
 
 checkIfAtBottom = () ->
 	if $(window).scrollTop() == $(document).height() - $(window).height()
 		$('#contact').off 'mouseleave', fadeOutInformation
-		$('#information').fadeIn(325)
+		$('#information').fadeIn(contactFadeDuration)
 	else
 		$('#contact').on 'mouseleave', fadeOutInformation
 		if not isMouseOverContact
-			$('#information').fadeOut(325)
+			$('#information').fadeOut(contactFadeDuration)
 
 determineProfilePicture = () ->
 	projects = $('#projects').position().top - scrollOffset - 5
@@ -45,14 +48,15 @@ determineProfilePicture = () ->
 	scroll = $(window).scrollTop()
 	image = $('#profile_pic')
 
-	if scroll == $(document).height() - $(window).height()
-		image.attr 'src', 'images/profile.png'
-	else
-		if scroll < projects
-			image.attr 'src', 'images/profile_alt_1.png'
-		else if projects <= scroll < work
-			image.attr 'src', 'images/profile_alt_2.png'
-		else if work <= scroll and scroll != $(document).height() - $(window).height()
-			image.attr 'src', 'images/profile_alt_3.png'
-		else
+	if not isMouseOverContact
+		if scroll == $(document).height() - $(window).height()
 			image.attr 'src', 'images/profile.png'
+		else
+			if scroll < projects
+				image.attr 'src', 'images/profile_alt_1.png'
+			else if projects <= scroll < work
+				image.attr 'src', 'images/profile_alt_2.png'
+			else if work <= scroll and scroll != $(document).height() - $(window).height()
+				image.attr 'src', 'images/profile_alt_3.png'
+			else
+				image.attr 'src', 'images/profile.png'
