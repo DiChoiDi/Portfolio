@@ -1,4 +1,5 @@
 isMouseOverContact = false
+isMouseOverArticle = false
 scrollOffset = 35
 contactFadeDuration = 300
 
@@ -10,16 +11,18 @@ $(document).ready ->
 	$('#contact').on('mouseenter', () -> isMouseOverContact = true)
 
 	$('#links a').on('click', (event) ->
-		shiftWindow $($(this).attr 'href').position().top
+		shiftWindow($($(this).attr 'href').position().top)
 		event.preventDefault()
 	)
 
 	$('article.sticky-note').hover(
 		(->
+			isMouseOverArticle = true
 			$(this).addClass('toggleFocus')
 			if($(window).scrollTop() != $(document).height() - $(window).height())
 				$('#profile_pic').addClass('toggleProfilePicFocus')),
 		(-> 
+			isMouseOverArticle = false
 			$(this).removeClass('toggleFocus')
 			$('#profile_pic').removeClass('toggleProfilePicFocus'))
 	)
@@ -27,7 +30,14 @@ $(document).ready ->
 	$(window).on('scroll', checkIfAtBottom)
 	$(window).on('scroll', determineProfilePicture)
 
-	checkIfAtBottom
+	$(window).bind('scrollstart', () ->
+		if(!isMouseOverContact)
+			$('#profile_pic').addClass('toggleProfilePicFocus'))
+	$(window).bind('scrollstop', () ->
+		if(!isMouseOverArticle)
+			$('#profile_pic').removeClass('toggleProfilePicFocus'))
+
+	checkIfAtBottom()
 
 shiftWindow = (position) ->
 	scrollTo 0, (position - scrollOffset)
