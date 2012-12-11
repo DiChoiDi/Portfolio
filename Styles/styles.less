@@ -6,6 +6,7 @@
 @image-height: 274px;
 @image-width: 175px;
 @image-offset: -225px;
+@transition-duration: 0.5s;
 
 html, body 
 {
@@ -39,7 +40,7 @@ h3, h4
 	{
 		width: @container-width;
 		margin: (@header-height / 4) auto;
-		text-align: right;
+		text-align: center;
 		font-size: 20px;
 
 		a 
@@ -92,28 +93,30 @@ h3, h4
 
 			padding: 0 @margin-offset;
 			background:#ffc;
-			/* Firefox */  
-			-moz-box-shadow: 2px 5px 7px rgba(33,33,33,1);
-			/* Safari+Chrome */
-			-webkit-box-shadow: 2px 5px 7px rgba(33,33,33,.7);
-			/* Opera */
+			
+			-moz-box-shadow: 2px 5px 7px rgba(33,33,33,1); /* Firefox */  
+			-webkit-box-shadow: 2px 5px 7px rgba(33,33,33,.7); /* Safari+Chrome */
 			box-shadow: 2px 5px 7px rgba(33,33,33,.7);
 
 			-o-transform:rotate(4deg);  
 			-webkit-transform:rotate(4deg);  
 			-moz-transform:rotate(4deg);  
+			transform:rotate(4deg);  
 			top:5px;
 		}
 
 		article.sticky-note
 		{
 			text-align: left;
-			/* Firefox */
-			-moz-box-shadow: 2px 6px 7px rgba(33,33,33,1);
-			/* Safari+Chrome */
-			-webkit-box-shadow: 2px 6px 7px rgba(33,33,33,.7);
-			/* Opera */
-			box-shadow: 2px 6px 7px rgba(33,33,33,.7);
+
+			-moz-box-shadow: 2px 6px 7px rgba(33,33,33,1); /* Firefox */
+			-webkit-box-shadow: 2px 6px 7px rgba(33,33,33,.7); /* Safari+Chrome */
+			box-shadow: 2px 6px 7px rgba(33,33,33,.7); /* Opera */
+
+			-moz-transition: all @transition-duration; /* Firefox 4 */
+			-webkit-transition: all @transition-duration; /* Safari and Chrome */
+			-o-transition: all @transition-duration; /* Opera */
+			transition: all @transition-duration;
 
 			header
 			{
@@ -242,6 +245,11 @@ h3, h4
 			top: @image-offset;
 			height: @image-height;
 			width: @image-width;
+			
+			transition: all @transition-duration;
+			-moz-transition: all @transition-duration; /* Firefox 4 */
+			-webkit-transition: all @transition-duration; /* Safari and Chrome */
+			-o-transition: all @transition-duration; /* Opera */
 		}
 
 		#information 
@@ -279,4 +287,18 @@ h3, h4
 			}
 		}
 	}	
+}
+
+.toggleProfilePicFocus
+{
+	opacity: 0.1;
+}
+
+.toggleFocus
+{
+	-ms-transform: scale(1.025); /* IE 9 */
+	-webkit-transform: scale(1.025); /* Safari and Chrome */
+	-o-transform: scale(1.025); /* Opera */
+	-moz-transform: scale(1.025); /* Firefox */
+	transform: scale(1.025);
 }

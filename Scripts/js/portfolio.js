@@ -6,7 +6,7 @@
 
   scrollOffset = 35;
 
-  contactFadeDuration = 350;
+  contactFadeDuration = 300;
 
   $(document).ready(function() {
     $('#profile_pic').on('mouseenter', fadeInInformation);
@@ -21,6 +21,15 @@
       shiftWindow($($(this).attr('href')).position().top);
       return event.preventDefault();
     });
+    $('article.sticky-note').hover((function() {
+      $(this).addClass('toggleFocus');
+      if ($(window).scrollTop() !== $(document).height() - $(window).height()) {
+        return $('#profile_pic').addClass('toggleProfilePicFocus');
+      }
+    }), (function() {
+      $(this).removeClass('toggleFocus');
+      return $('#profile_pic').removeClass('toggleProfilePicFocus');
+    }));
     $(window).on('scroll', checkIfAtBottom);
     $(window).on('scroll', determineProfilePicture);
     return checkIfAtBottom;
@@ -32,12 +41,13 @@
 
   fadeInInformation = function() {
     $('#profile_pic').attr('src', 'images/profile.png');
-    $('#information').fadeIn(contactFadeDuration);
+    $('#profile_pic').removeClass('toggleProfilePicFocus');
+    $('#information').stop(true, true).fadeIn(contactFadeDuration);
     return isMouseOverContact = true;
   };
 
   fadeOutInformation = function() {
-    $('#information').fadeOut(contactFadeDuration);
+    $('#information').stop(true, true).fadeOut(contactFadeDuration);
     isMouseOverContact = false;
     return determineProfilePicture();
   };
@@ -45,11 +55,11 @@
   checkIfAtBottom = function() {
     if ($(window).scrollTop() === $(document).height() - $(window).height()) {
       $('#contact').off('mouseleave', fadeOutInformation);
-      return $('#information').fadeIn(contactFadeDuration);
+      return $('#information').stop(true, true).fadeIn(contactFadeDuration);
     } else {
       $('#contact').on('mouseleave', fadeOutInformation);
       if (!isMouseOverContact) {
-        return $('#information').fadeOut(contactFadeDuration);
+        return $('#information').stop(true, true).fadeOut(contactFadeDuration);
       }
     }
   };
@@ -62,6 +72,7 @@
     image = $('#profile_pic');
     if (!isMouseOverContact) {
       if (scroll === $(document).height() - $(window).height()) {
+        $('#profile_pic').removeClass('toggleProfilePicFocus');
         return image.attr('src', 'images/profile.png');
       } else {
         if (scroll < projects) {
@@ -71,6 +82,7 @@
         } else if (work <= scroll && scroll !== $(document).height() - $(window).height()) {
           return image.attr('src', 'images/profile_alt_3.png');
         } else {
+          $('#profile_pic').removeClass('toggleProfilePicFocus');
           return image.attr('src', 'images/profile.png');
         }
       }
