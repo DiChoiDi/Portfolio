@@ -6,7 +6,7 @@
 @image-height: 274px;
 @image-width: 175px;
 @image-offset: -225px;
-@transition-duration: 0.5s;
+@transition-duration: 0.2s;
 
 html, body 
 {
@@ -240,7 +240,7 @@ h3, h4
 
 		#profile_pic 
 		{
-			float: right;
+			float: left;
 			position: relative;
 			top: @image-offset;
 			height: @image-height;
@@ -258,7 +258,7 @@ h3, h4
 			@info-height: (-@image-offset - @footer-height / 3 + @margin-offset) * .75 ;
 
 			display: none;
-			float: left;
+			float: right;
 			position: relative;
 			background-color: yellow;
 			border-radius: 60px;
@@ -280,10 +280,10 @@ h3, h4
 				display: block; /* reduce the damage in FF3.0 */
 				position: absolute;
 				bottom: (@info-height / 4);
-				right: -10px;
+				left: -10px;
 				border-top: 15px solid transparent;
 				border-bottom: 15px solid transparent;
-				border-left: 15px solid yellow;
+				border-right: 15px solid yellow;
 			}
 		}
 	}	
