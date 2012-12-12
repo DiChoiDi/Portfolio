@@ -1,7 +1,7 @@
 isMouseOverContact = false
-isMouseOverArticle = false
+isMouseOverContent = false
 scrollOffset = 35
-contactFadeDuration = 300
+contactFadeDuration = 1000
 
 $(document).ready ->
 	$('#profile_pic').on('mouseenter', fadeInInformation)
@@ -15,14 +15,14 @@ $(document).ready ->
 		event.preventDefault()
 	)
 
-	$('article.sticky-note').hover(
+	$('#main_container').hover(
 		(->
-			isMouseOverArticle = true
+			isMouseOverContent = true
 			$(this).addClass('toggleFocus')
 			if($(window).scrollTop() != $(document).height() - $(window).height())
 				$('#profile_pic').addClass('toggleProfilePicFocus')),
 		(-> 
-			isMouseOverArticle = false
+			isMouseOverContent = false
 			$(this).removeClass('toggleFocus')
 			$('#profile_pic').removeClass('toggleProfilePicFocus'))
 	)
@@ -34,7 +34,7 @@ $(document).ready ->
 		if(!isMouseOverContact)
 			$('#profile_pic').addClass('toggleProfilePicFocus'))
 	$(window).bind('scrollstop', () ->
-		if(!isMouseOverArticle)
+		if(!isMouseOverContent)
 			$('#profile_pic').removeClass('toggleProfilePicFocus'))
 
 	checkIfAtBottom()
@@ -49,7 +49,7 @@ fadeInInformation = () ->
 	isMouseOverContact = true
 
 fadeOutInformation = () ->
-	$('#information').stop(true, true).fadeOut(contactFadeDuration)
+	$('#information').fadeOut(contactFadeDuration)
 	isMouseOverContact = false
 	determineProfilePicture()
 
@@ -60,7 +60,7 @@ checkIfAtBottom = () ->
 	else
 		$('#contact').on('mouseleave', fadeOutInformation)
 		if (not isMouseOverContact)
-			$('#information').stop(true, true).fadeOut(contactFadeDuration)
+			$('#information').fadeOut(contactFadeDuration)
 
 determineProfilePicture = () ->
 	projects = $('#projects').position().top - scrollOffset - 5
